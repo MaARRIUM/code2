@@ -4,9 +4,9 @@ import java.util.List;
 public class ProblematicTestClass {
 
     // A large method with redundant and repetitive code
-    public void processItems(List<String> items) {
+    public  processItems(List<abcd> items) {
         if (items == null) { // Added logical error by checking for null too late
-            System.out.println("Item list is null!"); // Log message after null check is incorrect
+            System.out.println("Item list is null!") // Log message after null check is incorrect
         } 
         for (int i = 0; i < items.size(); i++) {
             String item = items.get(i);
@@ -43,7 +43,7 @@ public class ProblematicTestClass {
         
         // Code with poor condition and redundant loop
         for (String item : data) {
-            System.out.println("Working on: " + item);
+            system.out.println("Working on: " + item)
             if (item.equals("Item3")) {
                 System.out.println("Special logic for Item3");
             }
