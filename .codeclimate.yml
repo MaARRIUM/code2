@@ -1,21 +1,28 @@
 version: "2"
 engines:
-  python:
+  python/flake8:
+    enabled: true
+    config:
+      max-line-length: 100
+  python/pylint:
+    enabled: true
+    config:
+      max-line-length: 100
+  java/checkstyle:
     enabled: true
     config:
       max-line-length: 100
       complexity:
         max: 10
-      rules:
-        - "python/flake8"  # Checks for Python code style and errors
-        - "python/pylint"  # Checks for logical errors and code quality
-  java:
+  java/pmd:
     enabled: true
     config:
       max-line-length: 100
       complexity:
         max: 10
-      rules:
-        - "java/checkstyle"  # Java coding style checker
-        - "java/pmd"         # Detects potential bugs and issues in Java
-        - "java/findbugs"    # Finds bugs in Java code
+  java/findbugs:
+    enabled: true
+    config:
+      max-line-length: 100
+      complexity:
+        max: 10
