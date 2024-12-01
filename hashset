@@ -1,0 +1,64 @@
+class HashSet:
+    def __init__(self, capacity=10):
+        """Initialize the HashSet with a fixed capacity and empty buckets."""
+        self.capacity = capacity
+        self.size = 0
+        self.buckets = [[] for _ in range(capacity)]  # Using a list of lists to handle collisions
+
+    def _hash(self, key):
+        """Hash function to map the key to a bucket index."""
+        return hash(key) % self.capacity
+
+    def add(self, key):
+        """Add a key to the HashSet."""
+        index = self._hash(key)
+        bucket = self.buckets[index]
+
+        if key not in bucket:
+            bucket.append(key)
+            self.size += 1
+
+    def remove(self, key):
+        """Remove a key from the HashSet."""
+        index = self._hash(key)
+        bucket = self.buckets[index]
+
+        if key in bucket:
+            bucket.remove(key)
+            self.size -= 1
+
+    def contains(self, key):
+        """Check if a key is in the HashSet."""
+        index = self._hash(key)
+        bucket = self.buckets[index]
+        return key in bucket
+
+    def __len__(self):
+        """Return the number of elements in the HashSet."""
+        return self.size
+
+    def __str__(self):
+        """Return a string representation of the HashSet."""
+        return f"HashSet({[key for bucket in self.buckets for key in bucket]})"
+
+
+# Example Usage
+hash_set = HashSet()
+
+# Add elements
+hash_set.add("apple")
+hash_set.add("banana")
+hash_set.add("cherry")
+print(hash_set)  # Output: HashSet(['apple', 'banana', 'cherry'])
+
+# Check for existence
+print(hash_set.contains("banana"))  # Output: True
+print(hash_set.contains("grape"))   # Output: False
+
+# Remove an element
+hash_set.remove("banana")
+print(hash_set.contains("banana"))  # Output: False
+print(hash_set)  # Output: HashSet(['apple', 'cherry'])
+
+# Check size
+print(len(hash_set))  # Output: 2
