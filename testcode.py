@@ -1,7 +1,7 @@
 class BrokenApp:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
+    def __init__(self, name1):
+        self.name = name;
+        self.age = age;
         self.status = "inactive"
     def startApp(self,):
         if self.status == "inactive"
